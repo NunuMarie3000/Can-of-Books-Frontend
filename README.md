@@ -15,6 +15,8 @@
 ## Change Log
 
 09/02/22 2:05pm - Application renders carousel of books from mongodb database via axios.get request to server
+9/02/22 2:39pm - Implemented cards on the carousel, display looks waaaay better
+9/02/22 6:24pm - User can create new books and the the application automatically rerenders the carousel with new book
 
 ## Estimates
 
@@ -27,6 +29,16 @@ Start time: approx. 1pm
 Finish time: 2:05pm
 
 Actual time needed to complete: approx. 1 hour
+
+Name of feature: Create: As a user, I'd like to add a new book to the shelf, so that I can update the list with my own recommendations.
+
+Estimate of time needed to complete: 5 hours
+
+Start time: 2:48pm
+
+Finish time:6:24pm
+
+Actual time needed to complete: approx. 4 hours
 
 ## Credit and Collaborations
 
