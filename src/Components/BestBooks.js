@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { Carousel } from 'react-bootstrap'
+import { Carousel, Card } from 'react-bootstrap'
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -29,20 +29,21 @@ class BestBooks extends React.Component {
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-        <Carousel variant='dark' fade style={{width: '36rem'}}>
-        {this.state.books !== '' ? (
-          this.state.books.map(book => 
+        
+        {this.state.books !== '' ? (<Carousel fade style={{width: '36rem'}}>
+          {this.state.books.map(book => 
       <Carousel.Item  key={book._id} >
-        <img style={{width:'18rem', height: '24rem'}} alt={book.title} src={book.image}/>
-        <Carousel.Caption>
-          <h3>{book.title}</h3>
-          <p>{book.description}</p>
-        </Carousel.Caption>
-      </Carousel.Item>)
-        ) : (
+        <Card style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '2rem'}}>
+								<Card.Img variant="top" src={book.image} alt={`${book.title} book cover`} style={{width:'18rem', height: '24rem'}}/>
+								<Card.Body>
+									<Card.Title>{book.title}</Card.Title>
+									<Card.Text>{book.description}</Card.Text>
+								</Card.Body>
+							</Card>
+      </Carousel.Item>)}</Carousel>) : (
           <h3>No Books Found :(</h3>
         )}
-        </Carousel>
+        
       </>
     )
   }
