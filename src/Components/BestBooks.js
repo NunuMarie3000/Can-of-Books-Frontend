@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Carousel, Card } from 'react-bootstrap'
 
 import AddBook from './AddBook';
+import DeleteBook from './DeleteBook';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -11,8 +12,6 @@ class BestBooks extends React.Component {
       books: '',
     }
   }
-
-  /* TODO: Make a GET request to your API to fetch all the books from the database  */
 
   getAllBooks = async () => {
     const url = `${process.env.REACT_APP_SERVER}books`
@@ -25,7 +24,7 @@ class BestBooks extends React.Component {
   }
 
   addNewBooks = (newBook) => {
-    this.setState({ books: [...this.state.books, newBook] }, () => console.log(this.state.books))
+    this.setState({ books: [...this.state.books, newBook] })
   }
 
   render() {
@@ -33,15 +32,15 @@ class BestBooks extends React.Component {
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-
-        {this.state.books !== '' ? (<Carousel fade style={{ width: '36rem' }}>
+        {this.state.books.length !== 0 ? (<Carousel fade style={{ width: '36rem' }}>
           {this.state.books.map(book =>
-            <Carousel.Item key={book._id} >
+            <Carousel.Item key={book._id}>
               <Card style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '2rem' }}>
                 <Card.Img variant="top" src={book.image} alt={`${book.title} book cover`} style={{ width: '18rem', height: '24rem' }} />
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
                   <Card.Text>{book.description}</Card.Text>
+                  <Card.Footer>{<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks}/>}</Card.Footer>
                 </Card.Body>
               </Card>
             </Carousel.Item>)}</Carousel>) : (

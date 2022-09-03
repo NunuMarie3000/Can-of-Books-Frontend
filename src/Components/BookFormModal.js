@@ -32,6 +32,12 @@ export default class BookFormModal extends Component {
     }
     try {
       await axios.post(url, newBookBody).then((res)=> this.props.addNewBooks(res.data)).catch(err=>console.log(err.message))
+      // not sure if clearing out the form field is necessary since i immediately close the modal, but here we are
+      e.target.title.value = ''
+      e.target.image.value = ''
+      e.target.description.value = ''
+      e.target.status.checked = ''
+      this.closeModal()
     } catch (error) {
       console.log(error.message)
     }

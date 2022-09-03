@@ -9,7 +9,7 @@ class Profile extends Component {
       <>
         <Navigation />
         <h3>**Author**: Storm O'Bryant<br />
-          **Version**: 1.0.0</h3>
+          **Version**: 1.0.2</h3>
       </>
     )
   }

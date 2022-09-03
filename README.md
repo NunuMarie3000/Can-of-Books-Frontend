@@ -1,7 +1,7 @@
 # Can of Books Frontend
 
 **Author**: Storm O'Bryant
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.2 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -17,10 +17,12 @@
 09/02/22 2:05pm - Application renders carousel of books from mongodb database via axios.get request to server
 9/02/22 2:39pm - Implemented cards on the carousel, display looks waaaay better
 9/02/22 6:24pm - User can create new books and the the application automatically rerenders the carousel with new book
+9/03/22 4:00pm - User can delete books and the application automatically rerenders the carousel without deleted book
+9/03/22 4:40pm - Delete button is disabled while axios request is requesting, is enabled when the request is finished
 
 ## Estimates
 
-Name of feature: Book Component: As a user, I'd like to see the list of books, so that I can see what's recommended to me.
+1.Name of feature: Book Component: As a user, I'd like to see the list of books, so that I can see what's recommended to me.
 
 Estimate of time needed to complete: 2 hours
 
@@ -30,7 +32,7 @@ Finish time: 2:05pm
 
 Actual time needed to complete: approx. 1 hour
 
-Name of feature: Create: As a user, I'd like to add a new book to the shelf, so that I can update the list with my own recommendations.
+2.Name of feature: Create: As a user, I'd like to add a new book to the shelf, so that I can update the list with my own recommendations.
 
 Estimate of time needed to complete: 5 hours
 
@@ -39,6 +41,16 @@ Start time: 2:48pm
 Finish time:6:24pm
 
 Actual time needed to complete: approx. 4 hours
+
+3.Name of feature: Delete: As a user, I want to remove books from my list, so that only the most important books are on my shelf.
+
+Estimate of time needed to complete: 6 hours
+
+Start time: 2:50pm
+
+Finish time: 4:00pm
+
+Actual time needed to complete: 1 hour, 10 minutes
 
 ## Credit and Collaborations
 
