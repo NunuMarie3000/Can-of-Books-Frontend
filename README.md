@@ -53,6 +53,7 @@
 9/02/22 6:24pm - User can create new books and the the application automatically rerenders the carousel with new book
 9/03/22 4:00pm - User can delete books and the application automatically rerenders the carousel without deleted book
 9/03/22 4:40pm - Delete button is disabled while axios request is requesting, is enabled when the request is finished
+9/06/22 10:33am - User can update their books, the application automatically updates the carousel with updated information
 
 ## Estimates
 
@@ -86,7 +87,19 @@ Finish time: 4:00pm
 
 Actual time needed to complete: 1 hour, 10 minutes
 
+4.Name of feature: Update: As a user, I want to update book details on my list, so that I can change the book status, or update the book details as I learn more about it.
+
+Estimate of time needed to complete: 6 hours
+
+Start time: 10:03am
+
+Finish time: 10:33am
+
+Actual time needed to complete: 30 minutes
+
 ## Credit and Collaborations
+
+Code Fellows for the Can-of-Books frontend and backend template starter code
 
 ### Logistical
 

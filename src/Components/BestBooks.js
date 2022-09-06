@@ -4,6 +4,7 @@ import { Carousel, Card } from 'react-bootstrap'
 
 import AddBook from './AddBook';
 import DeleteBook from './DeleteBook';
+import UpdateFormModal from './UpdateFormModal';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -40,7 +41,9 @@ class BestBooks extends React.Component {
                   <Card.Img className='card-img' variant="top" src={book.image} alt={`${book.title} book cover`} />
                   <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
-                    <Card.Text>{book.description}<br />{<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />}</Card.Text>
+                    <Card.Text>{book.description}<br />
+                    {<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />}<br/>
+                    {<UpdateFormModal bookId={book._id} getAllBooks={this.getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status}/>}</Card.Text>
                   </Card.Body>
                 </Card>
               </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}
