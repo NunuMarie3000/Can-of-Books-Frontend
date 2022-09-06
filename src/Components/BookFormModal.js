@@ -40,13 +40,14 @@ export default class BookFormModal extends Component {
       this.closeModal()
     } catch (error) {
       console.log(error.message)
+      alert("I'm sorry, there was an error with adding your book. Please try again :) ")
     }
   }
 
   render() {
     return (
       <Modal show={this.state.show} onHide={this.closeModal} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Add A Book</Modal.Title>
         </Modal.Header>
         <Modal.Body>

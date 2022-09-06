@@ -30,25 +30,23 @@ class BestBooks extends React.Component {
   render() {
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+        <div className='best-books-container'>
+          <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-        {this.state.books.length !== 0 ? (<Carousel fade style={{ width: '36rem' }}>
-          {this.state.books.map(book =>
-            <Carousel.Item key={book._id}>
-              <Card style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '2rem' }}>
-                <Card.Img variant="top" src={book.image} alt={`${book.title} book cover`} style={{ width: '18rem', height: '24rem' }} />
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <Card.Text>{book.description}</Card.Text>
-                  <Card.Footer>{<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks}/>}</Card.Footer>
-                </Card.Body>
-              </Card>
-            </Carousel.Item>)}</Carousel>) : (
-          <h3>No Books Found :(</h3>
-        )}
+          {this.state.books.length !== 0 ? (<Carousel fade style={{ width: 'auto' }}>
+            {this.state.books.map(book =>
+              <Carousel.Item key={book._id}>
+                <Card className='book-card'>
+                  <Card.Img className='card-img' variant="top" src={book.image} alt={`${book.title} book cover`} />
+                  <Card.Body>
+                    <Card.Title>{book.title}</Card.Title>
+                    <Card.Text>{book.description}<br />{<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}
 
-        <AddBook addNewBooks={this.addNewBooks} />
-
+          <AddBook addNewBooks={this.addNewBooks} />
+        </div>
       </>
     )
   }
