@@ -54,12 +54,12 @@ export default class BookFormModal extends Component {
           <Form onSubmit={this.handleFormSubmit}>
             <Form.Group className="mb-3" controlId="title">
               <Form.Label>Book Title </Form.Label>
-              <Form.Control type="text" placeholder="Their Eyes Were Watching God" />
+              <Form.Control required type="text" placeholder="Their Eyes Were Watching God" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="image">
               <Form.Label>Book Cover</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control required type="text" />
               <Form.Text className="text-muted">
                 Please use an image address: http://...
               </Form.Text>
@@ -67,7 +67,7 @@ export default class BookFormModal extends Component {
 
             <Form.Group className="mb-3" controlId="description">
               <Form.Label>Book Description</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control required type="text" />
               <Form.Text className="text-muted">
                 An amazing book by Zora Neale Hurston
               </Form.Text>
