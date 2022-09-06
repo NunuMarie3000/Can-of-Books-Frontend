@@ -34,7 +34,7 @@ class BestBooks extends React.Component {
         <div className='best-books-container'>
           <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-          {this.state.books.length !== 0 ? (<Carousel fade style={{ width: 'auto' }}>
+          {this.state.books.length !== 0 ? (<Carousel fade>
             {this.state.books.map(book =>
               <Carousel.Item key={book._id}>
                 <Card className='book-card'>
@@ -42,8 +42,11 @@ class BestBooks extends React.Component {
                   <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
                     <Card.Text>{book.description}<br />
-                    {<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />}<br/>
-                    {<UpdateFormModal bookId={book._id} getAllBooks={this.getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status}/>}</Card.Text>
+                      <div className='edit-buttons-container'>
+                        {<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />}
+                        {<UpdateFormModal bookId={book._id} getAllBooks={this.getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />}
+                      </div>
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}

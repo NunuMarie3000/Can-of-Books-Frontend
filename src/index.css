@@ -32,3 +32,28 @@ body{
   /* background-color: #DBA084; */
   /* border: 2px solid rgba(49, 43, 33, 0.5); */
 }
+
+.edit-buttons-container{
+  display: flex;
+  padding: 1rem;
+  justify-content: space-evenly;
+}
+
+.carousel{
+  width: auto;
+}
+.card-text{
+  width: 18rem;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+  background-image: none;
+}
+
+/* @media only screen and (min-width: 768px) {
+  body {
+    background-color: lightblue;
+  }
+
+} */
