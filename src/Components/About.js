@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Header from "../routes/Header";
+import Header from "./routes/Header";
 import Footer from "./Footer";
 
 class Profile extends Component {
