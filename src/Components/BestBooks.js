@@ -38,11 +38,23 @@ class BestBooks extends React.Component {
             {this.state.books.map(book =>
               <Carousel.Item key={book._id}>
                 <Card className='book-card'>
-                  <Card.Img className='card-img' variant="top" src={book.image} alt={`${book.title} book cover`} />
+                  <div className='book'>
+                    <Card.Img className='card-img' variant="top" src={book.image} alt={`${book.title} book cover`} />
+                    <div className='page'></div>
+                    <div className='page'></div>
+                    <div className='page'></div>
+                    <div className='page'></div>
+                    <div className='page'></div>
+                    <div className='last-page'>
+                      <h2>{book.title}</h2>
+                      <p>{book.description}</p>
+                      <p>Status: {book.status ? 'Available':'Not Available'}
+                      </p>
+                    </div>
+                    <div className='back-cover'></div>
+                  </div>
                   <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
-                    <Card.Text>{book.description}
-                    <h6>Status: {book.status ? 'Available':'Not Available'}</h6>
+                    <Card.Text>
                       <div className='edit-buttons-container'>
                         <AddBook addNewBooks={this.addNewBooks} />
                         <UpdateBook bookId={book._id} getAllBooks={this.getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />

@@ -42,6 +42,20 @@
 31.When the user clicks the delete button, send a `DELETE` request to `/books/:id`, replacing `:id` with the id of that book.
 32.Make sure that state is updated, and the book is removed from the user's list as soon as you get a success message back from the server, and that it stays removed when you reload the page.
 33.STRETCH: While the server is processing the delete request, the button may remain active and the book will show in the list. Configure your button component to go inactive as soon as it's clicked, and maybe even show a spinner. If the server hits an error while attempting to delete the book, display a helpful message and reactivate the button so that the user can try again.
+34.Add server code to handle `PUT` requests to a `/book/:id` route. Return the updated book.
+35.Add a form in the front end to let the user edit an existing book's details. When the form is submitted, send the new data to the server, and update the page according to the response.
+36.Add Auth0 to your `index.js` file, so that your application can use the authentication service.
+37.Copy over the given authentication components into the React application's file structure.
+38.Add the `Auth0Provider` component as a wrapper for your `App` component. Be sure to include your Auth0 secrets in your `.env` file.
+39.Conditionally render the `BestBooks` component, if the user is logged in. Otherwise, show the `Welcome` component.
+40.Utilize the `AuthButtons` component in your `Header`. This will show `Login` to users not signed in. When a signed-in user clicks the logout button, it should log the user out of the application.
+41.Include the JSON web token (JWT) in the header of all requests to the server.
+42.In your `App` component, use the imported `BrowserRouter` component to create routes for `/profile`.
+43.Create a `Profile` page that is only visible when a user is logged in. This component should display information about the user provided by Auth0, such as name, profile picture, and email address.
+44.Style your app nicely using `react-bootstrap`.
+45.BACKEND: Integrate the provided authorization middleware into your server. In the route handler functions, you will now have access to a `request.user.email` from the signed-in user.
+46.Modify ALL of the database calls to utilize the user's email address. Users should only be able to CRUD their own books!
+47.Deploy your application and ensure functionality is working correctly in your production environment.
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
@@ -100,23 +114,3 @@ Actual time needed to complete: 30 minutes
 ## Credit and Collaborations
 
 Code Fellows for the Can-of-Books frontend and backend template starter code
-
-### Logistical
-
-1. What hours will you be available to communicate?
-2. What platform will you use to communicate (ie. Slack, phone …)?
-3. How often will you take breaks?
-4. What is your plan if you start to fall behind?
-
-### Cooperative
-
-1. Make a list of each parson’s strengths.
-2. How can you best utilize these strengths in the development of your application?
-3. In what areas do you each want to develop greater strength?
-4. Knowing that every person in your team needs to understand the code, how do you plan to approach the day-to-day development?
-
-### Conflict Resolution
-
-1. What will your team do if one person is pulling all the weight while the other person is not contributing?
-2. What will your team do if one person is taking over the project and not letting the other member contribute?
-3. How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?
