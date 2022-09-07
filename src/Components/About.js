@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Header from "./Header";
+import Header from "../routes/Header";
 import Footer from "./Footer";
 
 class Profile extends Component {
@@ -9,9 +9,13 @@ class Profile extends Component {
     return (
       <>
         <Header />
-        <h3>**Author**: Storm O'Bryant<br />
-          **Version**: 1.0.2</h3>
-        <h4> Template by Code Fellows</h4>
+        <div className='about-info'>
+          <h2>**Author**</h2>
+          <h3>Storm O'Bryant</h3>
+          <h2>**Version**</h2>
+          <h3> 1.0.4</h3>
+          <h4 style={{fontFamily:"'Niconne', cursive", fontSize:'28px'}}> Template by Code Fellows</h4>
+        </div>
         <Footer/>
       </>
     )

@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 export default function Header() {
   return (
     <>
-      <Navbar style={{width: 'auto', margin:'0', padding:'0'}} collapseOnSelect expand="md">
+      <Navbar style={{marginLeft:'1rem'}} collapseOnSelect expand="md">
         <Navbar.Brand style={{fontSize: '2em'}}>Can of Books</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>

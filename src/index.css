@@ -2,18 +2,46 @@ body{
   background-color:rgb(225, 210, 184);
 }
 
+h2{
+  font-family: 'Niconne', cursive;
+  font-size: 36px;
+}
+
+.navbar-brand{
+  font-family: 'Niconne', cursive;
+  margin-left: 1vw;
+}
+
+nav.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 1vw;
+}
+
 .book-card{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 1rem auto;
   background-color: rgb(225, 210, 184);
   border-style: none;
+}
+.card-text{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
 }
 .card-img{
   width: 18rem;
   height: 24rem;
   margin-top: 2rem;
+  box-shadow: 3px 3px 5px 6px rgba(43, 43, 43, 0.3);
+  transition: 0.7s ease;
+}
+.card-img:hover{
+  box-shadow: 0 10px 20px rgba(0, 0, 0);
 }
 .best-books-container{
   display: flex;
@@ -22,20 +50,8 @@ body{
   gap: 1rem;
 }
 
-.navbar{
-  /* background-color: rgb(155, 119, 93); */
-}
-.navbar-brand{
-  font-family: 'Niconne', cursive;
-}
-.navbar{
-  /* background-color: #DBA084; */
-  /* border: 2px solid rgba(49, 43, 33, 0.5); */
-}
-
 .edit-buttons-container{
   display: flex;
-  padding: 1rem;
   justify-content: space-evenly;
 }
 
@@ -50,10 +66,15 @@ body{
 .carousel-control-prev-icon{
   background-image: none;
 }
+.carousel-indicators{
+  display: none;
+}
 
-/* @media only screen and (min-width: 768px) {
-  body {
-    background-color: lightblue;
-  }
-
-} */
+.about-info{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 10vh 0;
+}

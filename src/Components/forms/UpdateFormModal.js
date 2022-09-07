@@ -7,17 +7,9 @@ export default class UpdateFormModal extends Component {
     super(props)
 
     this.state = {
-      show: false,
+      show: this.props.show,
       isChecked: false,
     }
-  }
-
-  handleUpdateButtonClick = () => {
-    this.setState({ show: true })
-  }
-
-  closeModal = () => {
-    this.setState({ show: false })
   }
 
   toggleStatusCheck = () => {
@@ -36,7 +28,7 @@ export default class UpdateFormModal extends Component {
     try {
       await axios.put(url, newBookBody)
       await this.props.getAllBooks()
-      this.closeModal()
+      this.props.closeModal()
     } catch (error) {
       console.log(error.message)
       alert("I'm sorry, there was an error with updating your book. Please try again :) ")
@@ -46,9 +38,7 @@ export default class UpdateFormModal extends Component {
   render() {
     return (
       <>
-        <Button onClick={this.handleUpdateButtonClick}>Update Book</Button>
-
-        <Modal show={this.state.show} onHide={this.closeModal} backdrop="static" keyboard={false}>
+        <Modal show={this.state.show} onHide={this.props.closeModal} backdrop="static" keyboard={false}>
           <Modal.Header>
             <Modal.Title>Update Your Book</Modal.Title>
           </Modal.Header>
@@ -80,12 +70,12 @@ export default class UpdateFormModal extends Component {
               </Form.Group>
 
               <Button variant="primary" type="submit">
-                Submit Book!
+                Update Book!
               </Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.closeModal}>
+            <Button variant="secondary" onClick={this.props.closeModal}>
               Close
             </Button>
           </Modal.Footer>

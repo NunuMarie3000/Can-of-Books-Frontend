@@ -2,9 +2,9 @@ import React from 'react';
 import axios from 'axios'
 import { Carousel, Card } from 'react-bootstrap'
 
-import AddBook from './AddBook';
-import DeleteBook from './DeleteBook';
-import UpdateFormModal from './UpdateFormModal';
+import AddBook from './crud/AddBook';
+import DeleteBook from './crud/DeleteBook';
+import UpdateBook from './crud/UpdateBook';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -41,17 +41,19 @@ class BestBooks extends React.Component {
                   <Card.Img className='card-img' variant="top" src={book.image} alt={`${book.title} book cover`} />
                   <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
-                    <Card.Text>{book.description}<br />
+                    <Card.Text>{book.description}
+                    <h6>Status: {book.status ? 'Available':'Not Available'}</h6>
                       <div className='edit-buttons-container'>
-                        {<DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />}
-                        {<UpdateFormModal bookId={book._id} getAllBooks={this.getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />}
+                        <AddBook addNewBooks={this.addNewBooks} />
+                        <UpdateBook bookId={book._id} getAllBooks={this.getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />
+                        <DeleteBook bookId={book._id} getAllBooks={this.getAllBooks} />
                       </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
               </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}
 
-          <AddBook addNewBooks={this.addNewBooks} />
+          {/* <AddBook addNewBooks={this.addNewBooks} /> */}
         </div>
       </>
     )

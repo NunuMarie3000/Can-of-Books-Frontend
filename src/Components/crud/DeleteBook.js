@@ -27,7 +27,7 @@ export default class DeleteBook extends Component {
   render() {
     return (
       <>
-        <Button variant='secondary' disabled={this.state.isLoading} onClick={this.handleDelete}>
+        <Button variant='danger' disabled={this.state.isLoading} onClick={this.handleDelete}>
         {this.state.isLoading ? 'Loading...' : 'Delete'}
         </Button>
       </>
