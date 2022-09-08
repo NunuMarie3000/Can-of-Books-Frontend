@@ -13,6 +13,7 @@ export default class DeleteBook extends Component {
   }
 
   handleDelete = async() => {
+    if(this.state.book_id === 1) return alert("I'm sorry, but you cannot delete the welcome book")
     try {
       this.setState({isLoading: true})
       const url = `${process.env.REACT_APP_SERVER}books/${this.state.book_id}`

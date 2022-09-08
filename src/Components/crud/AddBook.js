@@ -25,7 +25,7 @@ export default class AddBook extends Component {
       <>
         {!this.state.addButtonClicked && <Button variant='success' onClick={this.handleClick}>Add Book</Button>}
 
-        {this.state.addButtonClicked && <BookFormModal addNewBooks={this.props.addNewBooks} addButtonFalse={this.addButtonClickedFalse} show={this.state.addButtonClicked}/>}
+        {this.state.addButtonClicked && <BookFormModal userID={this.props.userID} addNewBooks={this.props.addNewBooks} addButtonFalse={this.addButtonClickedFalse} show={this.state.addButtonClicked}/>}
       </>
     )
   }

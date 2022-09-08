@@ -28,7 +28,8 @@ export default class BookFormModal extends Component {
       "title":e.target.title.value,
       "image":e.target.image.value,
       "description":e.target.description.value,
-      "status":e.target.status.checked
+      "status":e.target.status.checked,
+      "reader": this.props.userID
     }
     try {
       await axios.post(url, newBookBody).then((res)=> this.props.addNewBooks(res.data)).catch(err=>console.log(err.message))

@@ -7,25 +7,37 @@ import AddBook from './crud/AddBook';
 import DeleteBook from './crud/DeleteBook';
 import UpdateBook from './crud/UpdateBook';
 import Login from './auth/Login';
+import welcome from './media/welcome.jpg'
 
 export default function BestBooks() {
 
-  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [books, setBooks] = useState('')
+  const {
+    isAuthenticated,
+    getAccessTokenSilently,
+  } = useAuth0();
+  const [books, setBooks] = useState([{
+    title: 'Welcome to Can of Books!',
+    image: welcome,
+    description: "This is an interactive book library for your life. Feel free to add your own books, edit, and delete to your heart's content!",
+    status:false,
+    _id:1
+  }])
+  const [userID, setUserID] = useState('')
 
   const getAllBooks = async () => {
     // getting my access token
     // after setting audience and scope in index.js, its now my jwt, i need to send it as auth headers in my get request 
     try {
       const token = await getAccessTokenSilently()
-    
       const url = `${process.env.REACT_APP_SERVER}books`
-      const allBooks = await axios.get(url, {
-        headers:{
+      // const url = 'http://localhost:3001/books'
+      const response = await axios.get(url, {
+        headers: {
           authorization: `Bearer ${token}`
         }
       })
-      setBooks(allBooks.data)
+      setBooks([...books, response.data.books])
+      setUserID(response.data.userInfo._id)
     } catch (error) {
       console.log(error.message)
     }
@@ -35,17 +47,17 @@ export default function BestBooks() {
     setBooks([...books, newBook])
   }
 
-  // basically same as componentDidMount
+  // basically same as componentDidMount, but only if i add the empty dependency array
   useEffect(() => {
     getAllBooks()
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
       {isAuthenticated ? <> <div className='best-books-container'>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
-        {books.length !== 0 ? (<Carousel fade>
+        {books !== '' ? (<Carousel fade>
           {books.map(book =>
             <Carousel.Item key={book._id}>
               <Card className='book-card'>
@@ -67,8 +79,8 @@ export default function BestBooks() {
                 <Card.Body>
                   <Card.Text>
                     <div className='edit-buttons-container'>
-                      <AddBook addNewBooks={addNewBooks} />
-                      <UpdateBook bookId={book._id} getAllBooks={getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />
+                      <AddBook addNewBooks={addNewBooks} userID={userID} />
+                      <UpdateBook userID={userID} bookId={book._id} getAllBooks={getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />
                       <DeleteBook bookId={book._id} getAllBooks={getAllBooks} />
                     </div>
                   </Card.Text>
@@ -76,6 +88,16 @@ export default function BestBooks() {
               </Card>
             </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}
       </div></> : <Login />}
+
+
+      {/* <div className='best-books-container'>
+        <Button onClick={loginWithRedirect}>Login</Button>
+        <Button onClick={logout}>Logout</Button>
+        <h3>User is {isAuthenticated ? 'Logged in' : 'Not logged in'}</h3>
+        <Button onClick={callProtectedApi}>call protected api</Button>
+        <Button onClick={callApi}>call unprotect api</Button>
+        {isAuthenticated && <pre>{JSON.stringify(user, null, 2)}</pre>}
+      </div> */}
     </>
   )
 }

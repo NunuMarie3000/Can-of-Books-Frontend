@@ -12,6 +12,7 @@ export default class UpdateBook extends Component {
   }
 
   handleUpdateButtonClick = () => {
+    if(this.props.bookId === 1) return alert("I'm sorry, the welcome book cannot be edited")
     this.setState({ show: true })
   }
 
@@ -24,7 +25,7 @@ export default class UpdateBook extends Component {
       <>
         {!this.state.show && <Button variant='info' onClick={this.handleUpdateButtonClick}>Update</Button>}
 
-        {this.state.show && <UpdateFormModal show={this.state.show} closeModal={this.closeModal} bookId={this.props.bookId} getAllBooks={this.props.getAllBooks} title={this.props.title} image={this.props.image} description={this.props.description} staus={this.props.status} />}
+        {this.state.show && <UpdateFormModal userID={this.props.userID} show={this.state.show} closeModal={this.closeModal} bookId={this.props.bookId} getAllBooks={this.props.getAllBooks} title={this.props.title} image={this.props.image} description={this.props.description} staus={this.props.status} />}
       </>
     )
   }

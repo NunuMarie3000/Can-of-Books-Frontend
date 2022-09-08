@@ -15,7 +15,7 @@ root.render(
       clientId={process.env.REACT_APP_AUTH0_CLIENTID}
       redirectUri={window.location.origin}
       audience={process.env.REACT_APP_AUDIENCE}
-      scope='openid profile email'
+      scope="openid profile email"
       >
       <BrowserRouter>
         <Routes>
