@@ -6,6 +6,9 @@ h2{
   font-family: 'Niconne', cursive;
   font-size: 36px;
 }
+h1{
+  font-size: 40px;
+}
 
 .navbar-brand{
   font-family: 'Niconne', cursive;
@@ -17,6 +20,13 @@ nav.navbar{
   flex-direction: row;
   justify-content: flex-end;
   margin-right: 1vw;
+}
+
+.active.nav-link,
+.nav-link{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1vw;
 }
 
 .book-card{
@@ -41,7 +51,7 @@ nav.navbar{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 24rem;
+  height: 30rem;
 }
 .book:hover .card-img{
   transform: rotateX(10deg) rotateY(-180deg);
@@ -181,12 +191,12 @@ nav.navbar{
   }
   .page,
   .last-page{
-    transform: rotateX(20deg);
-    -webkit-transform: rotateX(20deg);
+    transform: rotateX(10deg);
+    -webkit-transform: rotateX(10deg);
   }
   .card-img,
   .back-cover{
-    transform: rotateX(20deg);
-    -webkit-transform: rotateX(20deg);
+    transform: rotateX(10deg);
+    -webkit-transform: rotateX(10deg);
   }
 }

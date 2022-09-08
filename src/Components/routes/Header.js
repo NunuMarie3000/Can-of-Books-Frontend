@@ -2,8 +2,14 @@ import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Outlet } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
+import Logout from '../auth/Logout'
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function Header() {
+
+  const { isAuthenticated } = useAuth0();
+
   return (
     <>
       <Navbar style={{marginLeft:'1rem'}} collapseOnSelect expand="md">
@@ -17,6 +23,10 @@ export default function Header() {
             <LinkContainer to='/about'>
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
+            {isAuthenticated && <><LinkContainer to='/profile'>
+              <Nav.Link>Profile</Nav.Link>
+            </LinkContainer>
+            <Nav.Item><Logout/></Nav.Item></>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
