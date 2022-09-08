@@ -16,11 +16,16 @@ export default function Profile() {
   return (
     <>
       <Header/>
+      <>
+      <h1 style={{textAlign:'center'}}>Welcome, {user.given_name}!</h1>
+      <div style={{display:'flex', justifyContent:'flex-start', alignItems:'center', gap:'2rem', marginLeft:'5vw'}}>
+      <img style={{borderRadius:'10%', width:'10rem', height:'10rem'}} alt={user.name} src={user.picture ? user.picture: noPic}/>
       <div>
-      <h1>Welcome, {user.name}!</h1>
-      <img alt={user.name} src={user.picture ? user.picture: noPic}/>
-      <h3>Email: {user.email}</h3>
+        <h3>Name: {user.name}</h3>
+        <h3>Email: {user.email}</h3>
       </div>
+      </div>
+      </>
       <Footer/>
     </>
   )
