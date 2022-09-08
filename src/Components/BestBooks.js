@@ -10,19 +10,32 @@ import Login from './auth/Login';
 
 export default function BestBooks() {
 
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [books, setBooks] = useState('')
 
   const getAllBooks = async () => {
-    const url = `${process.env.REACT_APP_SERVER}books`
-    const allBooks = await axios.get(url)
-    setBooks(allBooks.data)
+    // getting my access token
+    // after setting audience and scope in index.js, its now my jwt, i need to send it as auth headers in my get request 
+    try {
+      const token = await getAccessTokenSilently()
+    
+      const url = `${process.env.REACT_APP_SERVER}books`
+      const allBooks = await axios.get(url, {
+        headers:{
+          authorization: `Bearer ${token}`
+        }
+      })
+      setBooks(allBooks.data)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   const addNewBooks = (newBook) => {
     setBooks([...books, newBook])
   }
 
+  // basically same as componentDidMount
   useEffect(() => {
     getAllBooks()
   });
