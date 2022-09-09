@@ -22,7 +22,8 @@ export default function BestBooks() {
     status:false,
     _id:1
   }])
-  const [userID, setUserID] = useState('')
+
+  const [userEmail, setUserEmail] = useState('')
 
   const getAllBooks = async () => {
     // getting my access token
@@ -36,8 +37,8 @@ export default function BestBooks() {
           authorization: `Bearer ${token}`
         }
       })
-      setBooks([...books, response.data.books])
-      setUserID(response.data.userInfo._id)
+      setBooks(response.data.books)
+      setUserEmail(response.data.userInfo[0].email)
     } catch (error) {
       console.log(error.message)
     }
@@ -79,8 +80,8 @@ export default function BestBooks() {
                 <Card.Body>
                   <Card.Text>
                     <div className='edit-buttons-container'>
-                      <AddBook addNewBooks={addNewBooks} userID={userID} />
-                      <UpdateBook userID={userID} bookId={book._id} getAllBooks={getAllBooks} title={book.title} image={book.image} description={book.description} staus={book.status} />
+                      <AddBook addNewBooks={addNewBooks} userEmail={userEmail} getAccessTokenSilently={getAccessTokenSilently}/>
+                      <UpdateBook userEmail={userEmail} getAccessTokenSilently={getAccessTokenSilently} bookId={book._id} getAllBooks={getAllBooks} title={book.title} image={book.image} description={book.description} />
                       <DeleteBook bookId={book._id} getAllBooks={getAllBooks} />
                     </div>
                   </Card.Text>
@@ -88,16 +89,6 @@ export default function BestBooks() {
               </Card>
             </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}
       </div></> : <Login />}
-
-
-      {/* <div className='best-books-container'>
-        <Button onClick={loginWithRedirect}>Login</Button>
-        <Button onClick={logout}>Logout</Button>
-        <h3>User is {isAuthenticated ? 'Logged in' : 'Not logged in'}</h3>
-        <Button onClick={callProtectedApi}>call protected api</Button>
-        <Button onClick={callApi}>call unprotect api</Button>
-        {isAuthenticated && <pre>{JSON.stringify(user, null, 2)}</pre>}
-      </div> */}
     </>
   )
 }

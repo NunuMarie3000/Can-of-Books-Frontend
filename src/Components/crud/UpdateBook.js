@@ -1,33 +1,24 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import UpdateFormModal from '../forms/UpdateFormModal'
 import { Button } from 'react-bootstrap'
 
-export default class UpdateBook extends Component {
-  constructor(props) {
-    super(props)
+export default function UpdateBook({userEmail, getAccessTokenSilently, bookId, getAllBooks, title, image, description}) {
+  const [show, setShow] = useState(false)
 
-    this.state = {
-      show: false
-    }
+  const handleUpdateButtonClick = () => {
+    if (bookId === 1) return alert("I'm sorry, the welcome book cannot be edited")
+    setShow(true)
   }
 
-  handleUpdateButtonClick = () => {
-    if(this.props.bookId === 1) return alert("I'm sorry, the welcome book cannot be edited")
-    this.setState({ show: true })
+  const closeModal = () => {
+    setShow(false)
   }
 
-  closeModal = () => {
-    this.setState({ show: false })
-  }
+  return (
+    <>
+      {!show && <Button variant='info' onClick={handleUpdateButtonClick}>Update</Button>}
 
-  render() {
-    return (
-      <>
-        {!this.state.show && <Button variant='info' onClick={this.handleUpdateButtonClick}>Update</Button>}
-
-        {this.state.show && <UpdateFormModal userID={this.props.userID} show={this.state.show} closeModal={this.closeModal} bookId={this.props.bookId} getAllBooks={this.props.getAllBooks} title={this.props.title} image={this.props.image} description={this.props.description} staus={this.props.status} />}
-      </>
-    )
-  }
+      {show && <UpdateFormModal closeModal={closeModal} getAccessTokenSilently={getAccessTokenSilently} userEmail={userEmail} showTheModal={show} bookId={bookId} getAllBooks={getAllBooks} title={title} image={image} description={description} />}
+    </>
+  )
 }
-

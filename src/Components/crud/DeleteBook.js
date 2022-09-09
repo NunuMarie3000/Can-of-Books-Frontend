@@ -16,7 +16,9 @@ export default class DeleteBook extends Component {
     if(this.state.book_id === 1) return alert("I'm sorry, but you cannot delete the welcome book")
     try {
       this.setState({isLoading: true})
+      console.log('hey')
       const url = `${process.env.REACT_APP_SERVER}books/${this.state.book_id}`
+      // const url =  `http://localhost:3001/books/${this.state.book_id}`
       await axios.delete(url).then(()=>this.setState({isLoading: false}))
       this.props.getAllBooks()
     } catch (error) {

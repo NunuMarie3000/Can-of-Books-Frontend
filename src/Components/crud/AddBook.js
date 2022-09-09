@@ -1,32 +1,25 @@
-import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
+import React, { useState } from 'react'
 
 import BookFormModal from '../forms/BookFormModal'
 
-export default class AddBook extends Component {
-  constructor(props) {
-    super(props)
+import { Button } from 'react-bootstrap'
 
-    this.state = {
-      addButtonClicked: false,
-    }
+export default function AddBook({ addNewBooks, userEmail, getAccessTokenSilently}) {
+  const [addButtonClicked, setAddButtonClicked] = useState(false)
+
+  const handleClick = () => {
+    setAddButtonClicked(true)
   }
 
-  handleClick = () => {
-    this.setState({addButtonClicked: true})
+  const addButtonClickedFalse = () => {
+    setAddButtonClicked(false)
   }
+  return (
+    <>
+      {!addButtonClicked && <Button variant='success' onClick={handleClick}>Add Book</Button>}
 
-  addButtonClickedFalse = () => {
-    this.setState({addButtonClicked: false})
-  }
-
-  render() {
-    return (
-      <>
-        {!this.state.addButtonClicked && <Button variant='success' onClick={this.handleClick}>Add Book</Button>}
-
-        {this.state.addButtonClicked && <BookFormModal userID={this.props.userID} addNewBooks={this.props.addNewBooks} addButtonFalse={this.addButtonClickedFalse} show={this.state.addButtonClicked}/>}
-      </>
-    )
-  }
+      {addButtonClicked && <BookFormModal getAccessTokenSilently={getAccessTokenSilently} userEmail={userEmail} addNewBooks={addNewBooks} addButtonFalse={addButtonClickedFalse} modalShow={addButtonClicked} />}
+    </>
+  )
 }
+

@@ -69,6 +69,7 @@
 9/03/22 4:40pm - Delete button is disabled while axios request is requesting, is enabled when the request is finished
 9/06/22 10:33am - User can update their books, the application automatically updates the carousel with updated information
 9/08/22 5:28pm - User must sign in to use the application, user can only CRUD their own books
+9/08/22 9:22pm - Removed PUT/DELETE route from backend auth middleware, should work fine in after deploy
 
 ## Estimates
 
