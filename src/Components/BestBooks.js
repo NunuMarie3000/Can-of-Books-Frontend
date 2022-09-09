@@ -9,19 +9,21 @@ import UpdateBook from './crud/UpdateBook';
 import Login from './auth/Login';
 import welcome from './media/welcome.jpg'
 
+const welcomeBook = {
+  title: 'Welcome to Can of Books!',
+  image: welcome,
+  description: "This is an interactive book library for your life. Feel free to add your own books, edit, and delete to your heart's content!",
+  status:false,
+  _id:1
+}
+
 export default function BestBooks() {
 
   const {
     isAuthenticated,
     getAccessTokenSilently,
   } = useAuth0();
-  const [books, setBooks] = useState([{
-    title: 'Welcome to Can of Books!',
-    image: welcome,
-    description: "This is an interactive book library for your life. Feel free to add your own books, edit, and delete to your heart's content!",
-    status:false,
-    _id:1
-  }])
+  const [books, setBooks] = useState([welcomeBook])
 
   const [userEmail, setUserEmail] = useState('')
 
@@ -59,7 +61,7 @@ export default function BestBooks() {
       {isAuthenticated ? <> <div className='best-books-container'>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
         {books !== '' ? (<Carousel fade>
-          {books.map(book =>
+          {books.length > 1 ? books.map(book =>
             <Carousel.Item key={book._id}>
               <Card className='book-card'>
                 <div className='book'>
@@ -87,7 +89,32 @@ export default function BestBooks() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Carousel.Item>)}</Carousel>) : (<h3>No Books Found :(</h3>)}
+            </Carousel.Item>) : <Carousel.Item key={welcomeBook._id}>
+              <Card className='book-card'>
+                <div className='book'>
+                  <Card.Img className='card-img' variant="top" src={welcomeBook.image} alt={`${welcomeBook.title} book cover`} />
+                  <div className='page'></div>
+                  <div className='page'></div>
+                  <div className='page'></div>
+                  <div className='page'></div>
+                  <div className='page'></div>
+                  <div className='last-page'>
+                    <h2>{welcomeBook.title}</h2>
+                    <p>{welcomeBook.description}</p>
+                    <p>Status: {welcomeBook.status ? 'Available' : 'Not Available'}
+                    </p>
+                  </div>
+                  <div className='back-cover'></div>
+                </div>
+                <Card.Body>
+                  <Card.Text>
+                    <div className='edit-buttons-container'>
+                      <AddBook addNewBooks={addNewBooks} userEmail={userEmail} getAccessTokenSilently={getAccessTokenSilently}/>
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Carousel.Item>}</Carousel>) : (<h3>No Books Found :(</h3>)}
       </div></> : <Login />}
     </>
   )

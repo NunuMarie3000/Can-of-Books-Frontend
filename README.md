@@ -70,6 +70,7 @@
 9/06/22 10:33am - User can update their books, the application automatically updates the carousel with updated information
 9/08/22 5:28pm - User must sign in to use the application, user can only CRUD their own books
 9/08/22 9:22pm - Removed PUT/DELETE route from backend auth middleware, should work fine in after deploy
+9/08/22 9:49pm - More user friendly for new users, bestBooks is a bit more clunky, but i'll fix later
 
 ## Estimates
 
